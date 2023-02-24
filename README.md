@@ -1,11 +1,16 @@
 # Sistema de Locação
 
 
-## Dependencias
+## Dependências
 
 ```
 pip install django
 ```
+
+## Programas auxiliares
+
+> DB Browser for SQLite
+- sudo apt install sqlitebrowser
 
 
 ## Comandos úteis
@@ -15,3 +20,6 @@ pip install django
 
 > Cria um sub-módulo
 - python manage.py startapp <submodule_name>
+
+> Cria/Atualiza as tabelas do banco de dados
+- python manage.py migrate
