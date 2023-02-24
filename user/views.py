@@ -8,3 +8,9 @@ def login(request):
 
 def register(request):
     return render(request, 'register.html')
+
+def register_validation(request):
+    name = request.POST.get("name")
+    pwd = request.POST.get("password")
+    email = request.POST.get("email")
+    return HttpResponse(f'{name} {pwd} {email}')

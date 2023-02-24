@@ -4,4 +4,5 @@ from user import views
 urlpatterns = [
     path("login/", views.login, name="login"),
     path("register/", views.register, name="register"),
+    path("register_validation", views.register_validation, name="register_validation"),
 ]
