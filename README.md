@@ -12,3 +12,6 @@ pip install django
 
 > Inicia o projeto
 - django-admin startproject library .
+
+> Cria um sub-módulo
+- python manage.py startapp <submodule_name>
