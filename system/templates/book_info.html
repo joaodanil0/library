@@ -1,4 +1,5 @@
 {% extends 'base.html' %}
+{% load filters %}
 
 {% block 'title' %} Book info {% endblock %}
 
@@ -43,7 +44,7 @@
                     <th scope="row">{{borrow.borrower_name.name}}</th>
                     <td>{{borrow.borrow_date}}</td>
                     <td>{{borrow.borrow_return}}</td>
-                    <td>@mdo</td>
+                    <td>{{borrow.borrow_date|show_borrow_duration:borrow.borrow_return}} days</td>
                 </tr>
                 {% endfor %}
             </tbody>
