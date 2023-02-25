@@ -5,6 +5,7 @@
 {% block 'content' %}
 
 <div class="container">
+    <a href="{% url 'logout' %}" class="btn btn-danger">Logout</a>
     {% for book in books %}
     <div class="row">
 

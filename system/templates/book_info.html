@@ -4,28 +4,49 @@
 
 {% block 'content' %}
 
-<div style="text-align: center;" class="container">
-    <h1>{{book.name}}</h1>
-    <h1>{{book.author}}</h1>
-    <h1>{{book.co_author}}</h1>
-    <h1>{{book.register_date}}</h1>
-    <h1>Borrowed
-    {% if book.borrowed %}                        
-        <svg style="color:green; display:inline" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
-            <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
-        </svg>
-    {% else %}
-        <svg style="color:red; display:inline" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
-        <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
-        </svg>
-    {% endif %}
-    </h1>
-    <h1>{{book.borrower_name}}</h1>
-    <h1>{{book.borrow_date}}</h1>
-    <h1>{{book.borrow_return}}</h1>
-    <h1>{{book.borrow_time}}</h1>
-    <h1>{{book.category.name}}</h1>
-    <h1>{{book.user.name}}</h1>
-</div>
-{{book.name}}
+    <div style="text-align: center;" class="container">
+        <h1>{{book.name}}</h1>
+        <h1>{{book.author}}</h1>
+        <h1>{{book.co_author}}</h1>
+        <h1>{{book.register_date}}</h1>
+        <h1>Borrowed
+        {% if book.borrowed %}                        
+            <svg style="color:green; display:inline" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-check-lg" viewBox="0 0 16 16">
+                <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425a.247.247 0 0 1 .02-.022Z"/>
+            </svg>
+        {% else %}
+            <svg style="color:red; display:inline" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+            <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+            </svg>
+        {% endif %}
+        </h1>
+        <h1>{{book.borrower_name}}</h1>
+        <h1>{{book.borrow_date}}</h1>
+        <h1>{{book.borrow_return}}</h1>
+        <h1>{{book.borrow_time}}</h1>
+        <h1>{{book.category.name}}</h1>
+        <h1>{{book.user.name}}</h1>
+        <hr>
+        <h1>Borrow History</h1>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Borrow Date</th>
+                <th scope="col">Borrow Return</th>
+                <th scope="col">Borrow Duration</th>
+              </tr>
+            </thead>
+            <tbody>
+                {% for borrow in borrows %}
+                <tr>
+                    <th scope="row">{{borrow.borrower_name.name}}</th>
+                    <td>{{borrow.borrow_date}}</td>
+                    <td>{{borrow.borrow_return}}</td>
+                    <td>@mdo</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 {% endblock %}

@@ -4,6 +4,8 @@ from user.models import User
 
 # Create your models here.
 
+
+
 class Category(models.Model):
     name = models.CharField(max_length=50)
     description = models.TextField()
@@ -14,10 +16,12 @@ class Book(models.Model):
     co_author = models.CharField(max_length=30, blank=True)
     register_date = models.DateField(default=date.today)
     borrowed = models.BooleanField(default=False)
-    borrower_name = models.CharField(max_length=30, blank=True)
-    borrow_date = models.DateTimeField(blank=True, null=True)
-    borrow_return = models.DateTimeField(blank=True, null=True)
-    borrow_time = models.DateField(blank=True, null=True)
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+
+class Borrow(models.Model):
+    borrower_name = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    borrow_date = models.DateField(blank=True, null=True)
+    borrow_return = models.DateField(blank=True, null=True)
+    book = models.ForeignKey(Book, on_delete=models.DO_NOTHING)
 

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import redirect
 from user.models import User
-from book.models import Book
+from book.models import Book, Borrow
 
 # Create your views here.
 
@@ -17,5 +17,13 @@ def home(request):
         return redirect('/user/login/?status=2')
 
 def book_info(request, id):
-    book = Book.objects.get(id=id)
-    return render(request, 'book_info.html', {'book': book})
+    session = request.session.get('usr')
+
+    if session:
+        book = Book.objects.get(id=id)
+        if session == book.user.id:
+            borrow = Borrow.objects.filter(book=book)
+            return render(request, 'book_info.html', {'book': book, 'borrows':borrow})
+        else:
+            return render(request, "home.html")
+    
