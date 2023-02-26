@@ -11,6 +11,9 @@
         <div class="col-md">
             <div class="card" style="width: 18rem;">
                 <div class="card-body">
+                    {% if book.img %}
+                        <img width="100%" src="{{book.img.url}}" alt="">
+                    {% endif %}
                     <h5 class="card-title">{{book.name}}</h5>
                     Borrowed: 
                     {% if book.borrowed %}                        

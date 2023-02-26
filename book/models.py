@@ -18,6 +18,7 @@ class Book(models.Model):
     borrowed = models.BooleanField(default=False)
     category = models.ForeignKey(Category, on_delete=models.DO_NOTHING)
     user = models.ForeignKey(User, on_delete=models.DO_NOTHING)
+    img = models.ImageField(upload_to='book_cover', null=True, blank=True)
 
 class Borrow(models.Model):
     borrower_name = models.ForeignKey(User, on_delete=models.DO_NOTHING)

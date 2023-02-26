@@ -33,7 +33,7 @@
               </button>
             </div>
             <div class="modal-body">
-                <form action="{% url 'register_book'%}" method="POST"> {% csrf_token%}
+                <form action="{% url 'register_book'%}" method="POST" enctype="multipart/form-data"> {% csrf_token%}
                     <table>
                         {{form.as_table}}
                     </table>

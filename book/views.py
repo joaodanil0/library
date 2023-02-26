@@ -6,8 +6,7 @@ from book.forms import RegisterBook
 
 def register(request):
     if request.method == "POST":
-        form = RegisterBook(request.POST)
-
+        form = RegisterBook(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect('/system/home')
