@@ -13,6 +13,7 @@ def home(request):
         user = User.objects.get(id=session)
         book = Book.objects.filter(user=user)
         form = RegisterBook()
+        form.fields['user'].initial = session
         return render(request, 'home.html', {'books': book, 'logged':session, 'form':form})
     else:
         return redirect('/user/login/?status=2')
@@ -25,6 +26,7 @@ def book_info(request, id):
         if session == book.user.id:
             borrow = Borrow.objects.filter(book=book)
             form = RegisterBook()
+            form.fields['user'].initial = session
             return render(request, 'book_info.html', {'book': book, 'borrows':borrow, 'logged':session, 'form':form})
         else:
             return render(request, "home.html")

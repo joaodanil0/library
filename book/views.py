@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from book.forms import RegisterBook
 
@@ -10,6 +10,6 @@ def register(request):
 
         if form.is_valid():
             form.save()
-            HttpResponse("Saved")
+            return redirect('/system/home')
         else:
             return HttpResponse(form)
